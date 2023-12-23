@@ -126,11 +126,11 @@ const sorted = (el) => {
 sorted(carsSort)
 
 const newCars = (el) => {
-    return `<div class="addList"> ${carsSort[el][0]} ${carsSort[el][1]} (${carsSort[el][2]} model year) - an old car </div>`
+    return `<div class="addList"> ${carsSort[el][0]} ${carsSort[el][1]} (${carsSort[el][2]} model year) - an new car </div>`
 }
 
 const oldCars = (el) => {
-    return `<div class="addList"> ${carsSort[el][0]} ${carsSort[el][1]} (${carsSort[el][2]} model year) - an new car </div>`
+    return `<div class="addList"> ${carsSort[el][0]} ${carsSort[el][1]} (${carsSort[el][2]} model year) - an old car </div>`
 }
 
 let carsArr = []
@@ -195,8 +195,6 @@ button.addEventListener('click', () => {
         conclusion()
         answer.innerHTML = carsArr.join('')
         answer.append(input, button)
-        carsSort = []
-        carsPush()
         input.value = ''
         temp = ''
     }
@@ -209,8 +207,6 @@ let count = 1
 
 for (let el of btn) {
     el.addEventListener('click', () => {
-        listNull()
-        listProduct()
         input.value = ''
         temp = ''
         if (el.classList.contains('left') && count > 1) {
@@ -221,8 +217,12 @@ for (let el of btn) {
         if (count === 1) {
             input.placeholder = 'Например: "Привет"'
         } else if (count === 2) {
+            listNull()
+            listProduct()
             input.placeholder = 'Например: Яблоко - Фрукты'
         } else if (count == 3) {
+            carsSort = []
+            carsPush()
             input.placeholder = 'Например: Серый Опель 2020'
         }
         answer.innerHTML = output[count]
